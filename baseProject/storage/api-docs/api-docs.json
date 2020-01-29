@@ -1,0 +1,275 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Auth Usuarios",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "magdiel@kokonutstudio.com"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Login for new session",
+                "description": "A sample greeting to test out the API",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email for login user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Password for login the user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User logged successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Usuario logueado con éxito"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "access_token": {
+                                                    "type": "string",
+                                                    "example": "eyJ0eXAiOiJKV1QiLC..."
+                                                },
+                                                "token_type": {
+                                                    "type": "string",
+                                                    "example": "Bearer"
+                                                },
+                                                "expires_at": {
+                                                    "type": "string",
+                                                    "example": "2021-01-29 18:07:25"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Error in credentials",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "int",
+                                            "example": 1
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El correo o contraseña son erroneos"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "example": null
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "202": {
+                        "description": "Without data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "int",
+                                            "example": 0
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Te hace falta información para iniciar sesión"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "example": null
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logout for a logged user session",
+                "description": "A sample greeting to test out the API",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "Logout with Bearer token "
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/auth/signup": {
+            "post": {
+                "tags": [
+                    "Register"
+                ],
+                "summary": "Register for a new user",
+                "description": "A sample greeting to test out the API",
+                "operationId": "signup",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name for the new user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email for register for the new user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Password for register for the new user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "query",
+                        "description": "Password confirmation for the new user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User registeder successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Usuario creado con éxito"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "example": null
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Email repeated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "integer",
+                                            "example": 0
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Correo electrónico ya registrado"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "example": null
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "205": {
+                        "description": "Passwords isn't equals",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "integer",
+                                            "example": 0
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Los password no coinciden"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "example": null
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

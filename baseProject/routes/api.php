@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-// 
+//
 // Route::get('login', function() {
 //     echo 'login';
 // });
@@ -28,16 +28,13 @@ use Illuminate\Http\Request;
 
 
 
-Route::group([
-    'prefix' => 'auth'
-], function () {
+Route::group([ 'prefix' => 'auth' ], function () {
     Route::post('login', 'AuthController@login');
-    Route::post('signup', 'AuthController@signup');
+    Route::post('signup', 'RegisterController@signup');
 
-    Route::group([
-      'middleware' => 'auth:api'
-    ], function() {
-        Route::get('logout', 'AuthController@logout');
+    Route::group([ 'middleware' => 'auth:api' ], function() {
+        Route::post('logout', 'AuthController@logout');
+
         Route::get('user', 'AuthController@user');
     });
 });
