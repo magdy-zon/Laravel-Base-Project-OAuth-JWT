@@ -81,7 +81,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Initialize this project
 In order to run this project you should write in terminal:
 
-<code>composer update<code>
+<code>composer update</code>
 
 Now, on the root folder from your project you should search `.env` file.
 
