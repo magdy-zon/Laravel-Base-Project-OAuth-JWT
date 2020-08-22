@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\User;
 use App\Http\Controllers\ToolsController;
+
+use App\User;
 
 use AuthValidator;
 
@@ -16,113 +17,8 @@ class RegisterController extends Controller
         $this->idiom = \Request::header('lang');
     }
 
-     /**
-    * @OA\Post(
-    *     path="/api/auth/signup",
-    *     tags={"Register"},
-    *     summary="Register for a new user",
-    *     description="A sample greeting to test out the API",
-    *     operationId="signup",
-    *     @OA\Parameter(
-    *         name="name",
-    *         description="Name for the new user",
-    *         required=true,
-    *         in="query",
-    *         @OA\Schema(
-    *           type="string"
-    *         )
-    *     ),
-    *     @OA\Parameter(
-    *         name="email",
-    *         description="Email for register for the new user",
-    *         required=true,
-    *         in="query",
-    *         @OA\Schema(
-    *           type="string"
-    *         )
-    *     ),
-    *     @OA\Parameter(
-    *         name="password",
-    *         description="Password for register for the new user",
-    *         required=true,
-    *         in="query",
-    *         @OA\Schema(
-    *           type="string"
-    *         )
-    *     ),
-    *     @OA\Parameter(
-    *         name="password_confirmation",
-    *         description="Password confirmation for the new user",
-    *         required=true,
-    *         in="query",
-    *         @OA\Schema(
-    *           type="string"
-    *         )
-    *     ),
-    *     @OA\Response(
-    *       response=200,
-    *       description="User registeder successfully",
-    *       @OA\JsonContent(
-    *         @OA\Property(
-    *           property="success",
-    *           type="integer",
-    *           example=1
-    *         ),
-    *         @OA\Property(
-    *           property="message",
-    *           type="string",
-    *           example="Usuario creado con éxito"
-    *         ),
-    *         @OA\Property(
-    *             property="data",
-    *             type="object",
-    *             example=null
-    *         )
-    *       )
-    *     ),
-    *     @OA\Response(
-    *       response=204,
-    *       description="Email repeated",
-    *       @OA\JsonContent(
-    *         @OA\Property(
-    *           property="success",
-    *           type="integer",
-    *           example=0
-    *         ),
-    *         @OA\Property(
-    *           property="message",
-    *           type="string",
-    *           example="Correo electrónico ya registrado"
-    *         ),
-    *         @OA\Property(
-    *             property="data",
-    *             type="object",
-    *             example=null
-    *         )
-    *       )
-    *     ),
-    *     @OA\Response(
-    *       response=205,
-    *       description="Passwords isn't equals",
-    *       @OA\JsonContent(
-    *         @OA\Property(
-    *           property="success",
-    *           type="integer",
-    *           example=0
-    *         ),
-    *         @OA\Property(
-    *           property="message",
-    *           type="string",
-    *           example="Los password no coinciden"
-    *         ),
-    *         @OA\Property(
-    *             property="data",
-    *             type="object",
-    *             example=null
-    *         )
-    *       )
-    *     )
-    *   )
+    /**
+     * Register user (JWT OAuth)
     */
     public function signup(Request $request)
     {
@@ -148,6 +44,5 @@ class RegisterController extends Controller
 
         return ToolsController::returnResponse("register_success", 1, null, 200, $this->idiom);
     }
-
 
 }

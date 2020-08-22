@@ -13,25 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $primary_users  = User::where('cat_type_user_id', 1)->get();
-        $all_users      = array();
-        foreach ($primary_users as $user) {
-            $p_ubication    = $user->ubication
-            $all_secondary  = $user->secondary_users;
-
-            $all_secondary_users = array();
-            foreach ($all_secondary as $s_user) {
-                $secondary['secondary_user']  = User::find($s_user->fk_secondary->user);
-                $secondary['ubication']       = $s_user->ubication;
-                $all_secondary_users[]        = $secondary;
-            }
-
-            $primary['primary_user']    = $user;
-            $primary['ubication']       = $p_ubication;
-            $primary['secondary_users'] = $all_secondary_users;
-
-            $all_users[] = $primary;
-        }
+        // Something awesome
     }
 
     /**
@@ -41,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        // Something awesome
     }
 
     /**
@@ -52,7 +34,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Something awesome
     }
 
     /**
@@ -63,7 +45,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        // Something awesome
     }
 
     /**
@@ -74,7 +56,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Something awesome
     }
 
     /**
@@ -86,7 +68,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::where('id', $request->user_id)->update($request->type_user);
+        // Something awesome
     }
 
     /**
@@ -97,6 +79,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Something awesome
     }
 }

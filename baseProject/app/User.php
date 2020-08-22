@@ -39,16 +39,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function secondary_users() {
-        return $this->hasMany('App\SecondaryUser');
-    }
-
-    public function ubication() {
-        return $this->hasOne('App\Ubication');
-    }
-
-    public function history_ubications() {
-        return $this->hasMany('App\HistoryUbication');
-    }
-
 }
