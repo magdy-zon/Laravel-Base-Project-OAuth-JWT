@@ -78,17 +78,27 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
+## Initialize this project
 In order to run this project you should write in terminal:
 
-composer update
+<code>composer update<code>
 
-php artisan passport:install
+Now, on the root folder from your project you should search `.env` file.
 
-php artisan migrate
+If you don't see that file, you should:
 
+1. Copy the `.env.example` file manually.
+2. Generate key for Laravel project (<code>php artisan key:generate</code>)
 
-create .env File
+You should configure variables:
 
-Config any database
+<code>DB_DATABASE=""</code>
+<code>DB_USERNAME=""</code>
+<code>DB_PASSWORD=""</code>
 
-php artisan key:generate
+with your personal data.
+I assume you are working on `localhost` environment.
+
+Write in terminal:
+<code>php artisan passport:install</code>
+<code>php artisan migrate</code>
